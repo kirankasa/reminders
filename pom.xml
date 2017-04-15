@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>in.kiranreddy</groupId>
-	<artifactId>remainders</artifactId>
+	<artifactId>reminders</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>remainders</name>
-	<description>Demo project for Spring Boot</description>
+	<name>reminders</name>
+	<description>Reminders service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

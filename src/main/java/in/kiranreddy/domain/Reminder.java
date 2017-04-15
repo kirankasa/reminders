@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by kiranreddy on 11/04/17.
  */
 @Entity
-public class Remainder {
+public class Reminder {
 
     @Id
     @GeneratedValue
@@ -17,11 +17,11 @@ public class Remainder {
 
     private String title;
 
-    private String notes;
+    private String note;
 
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private Date date;
+    private Date reminderTime;
 
     public Long getId() {
         return id;
@@ -39,29 +39,19 @@ public class Remainder {
         this.title = title;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getNote() {
+        return note;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getReminderTime() {
+        return reminderTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "Remainder{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", notes='" + notes + '\'' +
-                ", date=" + date +
-                '}';
+    public void setReminderTime(Date reminderTime) {
+        this.reminderTime = reminderTime;
     }
 }

@@ -1,2 +1,2 @@
-# remainders
-Remainders service
+# reminders
+Reminders service

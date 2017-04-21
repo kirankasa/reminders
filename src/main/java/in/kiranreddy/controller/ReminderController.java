@@ -3,17 +3,18 @@ package in.kiranreddy.controller;
 import in.kiranreddy.domain.Reminder;
 import in.kiranreddy.repository.ReminderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by kiranreddy on 11/04/17.
+ * Created by kiranreddy on 21/04/17.
  */
-@RestController
-@RequestMapping(value = "/api/reminders")
+@Controller
+@RequestMapping
 public class ReminderController {
-
 
     private ReminderRepository reminderRepository;
 
@@ -23,27 +24,15 @@ public class ReminderController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Reminder> getAllRemainders() {
-        return reminderRepository.findAll();
+    public String loadHomePage(Model model) {
+        model.addAttribute("reminders", reminderRepository.findAll());
+        return "index";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Reminder getRemainder(@PathVariable("id") Long id) {
-        return reminderRepository.findOne(id);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteRemainder(@PathVariable("id") Long id) {
-        reminderRepository.delete(id);
-    }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void saveRemainder(@RequestBody Reminder reminder) {
+    public String addReminder(@ModelAttribute("reminder") Reminder reminder, Model model) {
         reminderRepository.save(reminder);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void saveRemainder(@PathVariable("id") Long id, @RequestBody Reminder reminder) {
-        reminderRepository.save(reminder);
+        return "redirect:/";
     }
 }
